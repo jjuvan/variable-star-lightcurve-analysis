@@ -453,8 +453,8 @@ def save_data(event):
     
 
 
-# RUN_CHISQBINTEST runs the csbt.py program with input parameters   
-def run_chisqbintest(event):
+# RUN_CSBT runs the csbt.py program with input parameters   
+def run_csbt(event):
     dlg = QDialog()
     dlg.setWindowTitle('Input csbt.py parameters')
     
@@ -1074,7 +1074,7 @@ def display_mag_limits(ax):
     return mag_info
 
 def display_binary_params(params, numpoints, window, method):
-    title1 = "CHISQBINTEST OUTPUT"
+    title1 = "CSBT OUTPUT"
     title2 = "BINARY PARAMETERS"
     underlined_title1 = ''.join([char + '\u0332' for char in title1])
     underlined_title2 = ''.join([char + '\u0332' for char in title2])
@@ -1178,7 +1178,7 @@ min1_r = plt.axvline(x=min1_rx, color = 'darkkhaki', ls = '-', lw = 2)
 min2_l = plt.axvline(x=min2_lx, color = 'darkgreen', ls = '-', lw = 2)
 min2_r = plt.axvline(x=min2_rx, color = 'darkgreen', ls = '-', lw = 2)
 
-# creating initial curves for chisqbintest
+# creating initial curves for csbt
 min1_fit1, = plt.plot(0, 0, color = 'r', linewidth = 3, zorder = 6)                         
 min2_fit1, = plt.plot(0, 0, color = 'r', linewidth = 2, linestyle = '--', zorder = 7)  
 min2_fit2, = plt.plot(0, 0, color = 'c', linewidth = 3, zorder = 6)              
@@ -1267,7 +1267,7 @@ magmin_box.on_submit(mag_minner)
 chislider.on_changed(chi_updater)
 slider_id = slider.on_changed(updater)
 Bsave.on_clicked(save_data)
-Brunchibin.on_clicked(run_chisqbintest)
+Brunchibin.on_clicked(run_csbt)
 Bclearchibin.on_clicked(clear_chibin)
 
 
