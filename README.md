@@ -13,3 +13,41 @@ The software incorporates numerical and scientific computing techniques using Py
 **Original Project:** [ROTSEANA](https://github.com/rotsehub/rotseana)
 
 **Note:** These programs were originally developed collaboratively. This repository highlights my modifications and additions to the existing research software.
+
+## Technical Contributions
+
+### 1. Interactive Light Curve Visualization and Modeling (`lcvis.py`)
+
+Expanded an existing Python visualization program to support interactive analysis and model fitting of variable star light curves.
+
+Key contributions:
+- Developed interactive controls for manually adjusting mathematical models to fit observed light curve data.
+- Implemented fitting calculations and chi-square statistics to evaluate agreement between models and observations.
+- Integrated functionality from `csbt.py` into the visualization interface, allowing users to perform additional fitting analysis without leaving the active window.
+- Expanded visualization and analysis capabilities to support interpretation of eclipsing binary light curves.
+
+### 2. Light Curve Feature Detection and Physical Parameter Analysis (`csbt.py`)
+
+Enhanced an existing light curve analysis program by implementing additional numerical methods and calculations.
+
+Key contributions:
+- Implemented a moving-average smoothing technique combined with SciPy's peak-detection functionality to identify light curve minima.
+- Used numerical curve fitting to characterize features of eclipsing binary light curves.
+- Added mathematical calculations for estimating physical parameters from fitted models.
+- Implemented uncertainty propagation using fitted parameter covariance matrices and analytical derivatives.
+
+### 3. Light Curve Data Filtering (`unconex2.py`)
+
+Made targeted improvements to an existing astronomical data preprocessing program.
+
+Key contribution:
+- Added an optional filtering parameter to exclude the first two and last two observations from each night's observational data before subsequent processing.
+
+## Technologies Used
+
+- **Programming Language:** Python
+- **Numerical Computing:** NumPy, SciPy
+- **Data Visualization:** Matplotlib
+- **Symbolic Mathematics:** SymPy
+- **Graphical User Interfaces:** PyQt5
+- **Scientific Methods:** Curve fitting, peak detection, moving averages, chi-square analysis, uncertainty propagation
