@@ -43,7 +43,7 @@ Made targeted improvements to an existing astronomical data preprocessing progra
 Key contribution:
 - Added an optional filtering parameter to exclude the first two and last two observations from each night's observational data before subsequent processing.
 
-## Technologies Used
+## Technology Used
 
 - **Programming Language:** Python
 - **Numerical Computing:** NumPy, SciPy
@@ -51,3 +51,17 @@ Key contribution:
 - **Symbolic Mathematics:** SymPy
 - **Graphical User Interfaces:** PyQt5
 - **Scientific Methods:** Curve fitting, peak detection, moving averages, chi-square analysis, uncertainty propagation
+
+- ## Example Analysis
+
+### Interactive Light Curve Visualization and Fitting
+
+The screenshot below demonstrates the interactive Lcvis interface analyzing an eclipsing binary star light curve. The visualization combines observational data, manually adjusted mathematical models, and fitting results from the integrated CSBT analysis program.
+
+![Lcvis interface displaying an eclipsing binary light curve with fitted models and CSBT analysis results](images/lcvis-csbt-analysis.png)
+
+The interface includes:
+- **Interactive model adjustment:** Controls for modifying model parameters, selecting mathematical models, and adjusting the plotted period.
+- **Integrated fitting analysis:** CSBT fitting results displayed alongside the manually adjusted Lcvis model.
+- **Statistical output:** Chi-square values, fitted parameters, and estimated uncertainties.
+- **Physical parameter estimation:** Calculated estimates of eclipsing binary system properties based on fitted light curve features.
