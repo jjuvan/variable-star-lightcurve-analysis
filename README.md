@@ -52,7 +52,7 @@ Key contribution:
 - **Graphical User Interfaces:** PyQt5
 - **Scientific Methods:** Curve fitting, peak detection, moving averages, chi-square analysis, uncertainty propagation
 
-- ## Example Analysis
+## Example Analysis
 
 ### Interactive Light Curve Visualization and Fitting
 
@@ -106,3 +106,27 @@ The following Pull Requests document two of my major contributions to the origin
 - Expanded CSBT analysis to include fitting of light curve maxima, physical parameter estimation, and uncertainty calculations.
 
 These Pull Requests provide additional documentation of the implementation and evolution of the research software.
+
+## Independent Dataset Demonstration — ASAS-SN
+
+To demonstrate the analysis software using observations from a different astronomical survey, I applied Lcvis and CSBT to publicly accessible photometric observations of **BS Ursae Majoris (BS UMa)** from the All-Sky Automated Survey for Supernovae (ASAS-SN).
+
+**Dataset:** [ASASSN-V J112541.52+423448.8 — BS UMa](https://asas-sn.osu.edu/variables/5c731cf4-80b4-51ee-bf6b-b3f0c30bf88b)
+
+The example uses 177 V-band observations and the ASAS-SN catalog period of 0.3495136 days.
+
+### LCVIS Visualization and Integrated CSBT Analysis
+
+The ASAS-SN observations were formatted as three-column input data containing observation time, magnitude, and magnitude uncertainty. Lcvis was used to phase-fold the observations, interactively adjust a periodic Gaussian model, and run the integrated CSBT analysis.
+
+![LCVIS analysis of ASAS-SN observations of BS UMa](images/lcvis-csbt-asassn-analysis.png)
+
+### Standalone CSBT Analysis
+
+The phase-folded observations saved by Lcvis were subsequently analyzed using standalone CSBT, with the moving-average method and a fitting window of 0.15 phase.
+
+![Standalone CSBT analysis of ASAS-SN observations of BS UMa](images/csbt-asassn-standalone-analysis.png)
+
+CSBT fits the primary and secondary eclipse regions separately and evaluates each fitted model against both its corresponding observations and the opposite eclipse. The analysis also includes a fit to the light curve maxima and estimates of binary system parameters with uncertainties.
+
+**Note:** These are exploratory fitting results demonstrating the software's capabilities, not independently validated physical measurements of BS UMa.
