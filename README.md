@@ -84,3 +84,25 @@ The visualization demonstrates several analytical capabilities:
 - **Physical parameter estimation:** Calculates estimates of eclipsing binary system properties, including eccentricity, argument of periastron, effective temperature ratio, and an inclination-related oblateness parameter.
 
 The fitted eclipse curves represent localized mathematical approximations rather than a single global physical model of the binary system.
+
+## Development History
+
+This repository contains selected programs from the collaborative [ROTSEANA research project](https://github.com/rotsehub/rotseana). My contributions were developed through multiple iterations, including feature additions, bug fixes, and revisions to existing analysis software.
+
+The following Pull Requests document two of my major contributions to the original repository.
+
+### [Pull Request #40 — CSBT Enhancements](https://github.com/rotsehub/rotseana/pull/40)
+
+- Introduced moving-average-based feature detection to improve the identification of light curve extrema.
+- Expanded the program's numerical analysis and reporting capabilities.
+
+### [Pull Request #45 — LCVIS and CSBT Revisions](https://github.com/rotsehub/rotseana/pull/45)
+
+- Restructured `lcvis.py` to reduce reliance on nested functions and improve code organization.
+- Updated the graphical interface to use PyQt5 for dialog windows.
+- Expanded interactive model selection, parameter adjustment, and period controls.
+- Integrated CSBT fitting functionality into the LCVIS visualization interface.
+- Improved saving functionality for analysis results and plots.
+- Expanded CSBT analysis to include fitting of light curve maxima, physical parameter estimation, and uncertainty calculations.
+
+These Pull Requests provide additional documentation of the implementation and evolution of the research software.
