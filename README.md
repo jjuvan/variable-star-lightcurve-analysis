@@ -101,7 +101,7 @@ The following Pull Requests document two of my major contributions to the origin
 - Restructured `lcvis.py` to reduce reliance on nested functions and improve code organization.
 - Updated the graphical interface to use PyQt5 for dialog windows.
 - Expanded interactive model selection, parameter adjustment, and period controls.
-- Integrated CSBT fitting functionality into the LCVIS visualization interface.
+- Integrated CSBT fitting functionality into the Lcvis visualization interface.
 - Improved saving functionality for analysis results and plots.
 - Expanded CSBT analysis to include fitting of light curve maxima, physical parameter estimation, and uncertainty calculations.
 
