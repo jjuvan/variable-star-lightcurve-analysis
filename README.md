@@ -65,3 +65,22 @@ The interface includes:
 - **Integrated fitting analysis:** CSBT fitting results displayed alongside the manually adjusted Lcvis model.
 - **Statistical output:** Chi-square values, fitted parameters, and estimated uncertainties.
 - **Physical parameter estimation:** Calculated estimates of eclipsing binary system properties based on fitted light curve features.
+
+### Standalone CSBT Analysis
+
+The standalone Chi-Square Binary Test (CSBT) program performs numerical fitting and analysis of eclipsing binary star light curves.
+
+The screenshot below demonstrates the analysis of the same variable star shown in the Lcvis example, using the moving-average-based feature detection method.
+
+![Standalone CSBT analysis displaying eclipse fits, fitted maxima, and estimated binary system parameters](images/csbt-standalone-analysis.png)
+
+The visualization demonstrates several analytical capabilities:
+
+- **Feature detection:** Uses moving-average smoothing and peak detection to identify important features of the light curve.
+- **Eclipse fitting:** Fits mathematical models to the primary and secondary eclipse regions.
+- **Maxima fitting:** Fits a sinusoidal model to characterize the light curve's maxima.
+- **Statistical evaluation:** Reports chi-square statistics for fitted models and comparisons with observational data.
+- **Uncertainty estimation:** Reports fitted parameter uncertainties derived from the fitting procedure.
+- **Physical parameter estimation:** Calculates estimates of eclipsing binary system properties, including eccentricity, argument of periastron, effective temperature ratio, and an inclination-related oblateness parameter.
+
+The fitted eclipse curves represent localized mathematical approximations rather than a single global physical model of the binary system.
