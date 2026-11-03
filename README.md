@@ -178,6 +178,8 @@ python3 src/lcvis.py observations.dat -p0 0.3495136
 
 Lcvis allows users to interactively inspect the phase-folded light curve, adjust fitting models, and run the integrated CSBT analysis.
 
+Note that in order to run CSBT in the Lcvis window, `lcvis.py` and `csbt.py` **must** remain in the same directory because Lcvis imports functionality from CSBT to perform integrated light-curve analysis. Both programs are provided in the repository's `src/` directory. When running Lcvis, preserve this directory structure.
+
 The phase-folded observations can also be saved as a separate `.dat` file for use with standalone CSBT.
 
 ## Running Standalone CSBT
