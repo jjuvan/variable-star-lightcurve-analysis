@@ -96,7 +96,7 @@ The following Pull Requests document two of my major contributions to the origin
 - Introduced moving-average-based feature detection to improve the identification of light curve extrema.
 - Expanded the program's numerical analysis and reporting capabilities.
 
-### [Pull Request #45 — LCVIS and CSBT Revisions](https://github.com/rotsehub/rotseana/pull/45)
+### [Pull Request #45 — Lcvis and CSBT Revisions](https://github.com/rotsehub/rotseana/pull/45)
 
 - Restructured `lcvis.py` to reduce reliance on nested functions and improve code organization.
 - Updated the graphical interface to use PyQt5 for dialog windows.
@@ -111,47 +111,51 @@ These Pull Requests provide additional documentation of the implementation and e
 
 To demonstrate the analysis software using observations from a different astronomical survey, I applied Lcvis and CSBT to publicly accessible photometric observations of **BS Ursae Majoris (BS UMa)** from the All-Sky Automated Survey for Supernovae (ASAS-SN).
 
-**Dataset:** [ASASSN-V J112541.52+423448.8 — BS UMa](https://asas-sn.osu.edu/variables/5c731cf4-80b4-51ee-bf6b-b3f0c30bf88b)
-
-The example uses 177 V-band observations and the ASAS-SN catalog period of 0.3495136 days.
+The Excel export used in this demonstration contained 177 V-band observations, all of which were retained during conversion. The number of observations available from ASAS-SN may change over time.
 
 ### Preparing ASAS-SN Observations
 
-The repository includes `scripts/convert_asassn.py`, a Python utility for converting ASAS-SN photometric observations into the three-column format required by Lcvis.
+The observational data used in this demonstration is **not included in this repository**. To reproduce the analysis, users must obtain the observations directly from ASAS-SN.
 
-The script accepts ASAS-SN Excel (`.xlsx`) and CSV (`.csv`) exports and extracts:
+**1. Download the observations**
 
-1. Heliocentric Julian Date (`hjd`)
-2. Apparent magnitude (`mag`)
-3. Magnitude uncertainty (`mag err` in Excel or `mag_err` in CSV)
+Visit the [ASAS-SN Variable Stars Database entry for BS UMa (ASASSN-V J112541.52+423448.8)](https://asas-sn.osu.edu/variables/5c731cf4-80b4-51ee-bf6b-b3f0c30bf88b).
+
+Download the available photometric observations in Excel (`.xlsx`) or CSV (`.csv`) format.
+
+**2. Convert the observations**
+
+The repository includes `scripts/convert_asassn.py`, a Python utility that extracts three columns from an ASAS-SN export:
+
+- Heliocentric Julian Date (`hjd`)
+- Apparent magnitude (`mag`)
+- Magnitude uncertainty (`mag err` in Excel or `mag_err` in CSV)
 
 Rows containing missing values in these columns are excluded.
 
-**Usage**
-
-From the repository's root directory:
+From the repository's root directory, run:
 
 ```bash
-python3 scripts/convert_asassn.py data/108374.xlsx
+python3 scripts/convert_asassn.py /path/to/downloaded_file.xlsx
 ```
 
-The script creates `108374.dat` in the current working directory, containing three whitespace-separated numeric columns without a header.
+Replace `/path/to/downloaded_file.xlsx` with the actual path to the downloaded observations.
 
-Multiple input files can also be converted in one command:
+The script creates a `.dat` file in the current working directory, using the original filename. For example, converting `108374.xlsx` produces `108374.dat`.
 
-```bash
-python3 scripts/convert_asassn.py file1.xlsx file2.csv
-```
+The output contains three whitespace-separated numeric columns without a header, suitable for loading into Lcvis.
 
-**Example dataset:** [ASAS-SN observations of BS UMa](https://asas-sn.osu.edu/variables/5c731cf4-80b4-51ee-bf6b-b3f0c30bf88b)
+**3. Analyze the converted observations**
 
-The Excel export used in this demonstration contained 177 observations, all of which were retained during conversion.
+Open the converted `.dat` file in Lcvis and phase-fold the observations using an appropriate period. For the BS UMa demonstration, the ASAS-SN catalog period of approximately 0.3495136 days was used.
 
-### LCVIS Visualization and Integrated CSBT Analysis
+Lcvis can also save the phase-folded observations to a separate `.dat` file for subsequent analysis with standalone CSBT.
+
+### Lcvis Visualization and Integrated CSBT Analysis
 
 The ASAS-SN observations were formatted as three-column input data containing observation time, magnitude, and magnitude uncertainty. Lcvis was used to phase-fold the observations, interactively adjust a periodic Gaussian model, and run the integrated CSBT analysis.
 
-![LCVIS analysis of ASAS-SN observations of BS UMa](images/lcvis-csbt-asassn-analysis.png)
+![Lcvis analysis of ASAS-SN observations of BS UMa](images/lcvis-csbt-asassn-analysis.png)
 
 ### Standalone CSBT Analysis
 
