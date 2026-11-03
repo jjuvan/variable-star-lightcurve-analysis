@@ -16,25 +16,25 @@ The project demonstrates practical applications of Python, NumPy, SciPy, Matplot
 
 ## Technical Contributions
 
-### 1. Interactive Light Curve Visualization and Modeling (`lcvis.py`)
+### 1. Interactive Light Curve Visualization and Modeling (lcvis.py)
 
-Expanded an existing Python visualization program to support interactive analysis and model fitting of variable star light curves.
+Extended an existing Python visualization program to support interactive model fitting and statistical analysis of variable-star light curves.
 
 Key contributions:
-- Developed interactive controls for manually adjusting mathematical models to fit observed light curve data.
-- Implemented fitting calculations and chi-square statistics to evaluate agreement between models and observations.
-- Integrated functionality from `csbt.py` into the visualization interface, allowing users to perform additional fitting analysis without leaving the active window.
-- Expanded visualization and analysis capabilities to support interpretation of eclipsing binary light curves.
+- Developed interactive controls for selecting mathematical models, adjusting fitting parameters, and modifying the period used to phase-fold observational data.
+- Implemented model evaluation and chi-square calculations to compare mathematical models against observed light curves.
+- Integrated CSBT fitting functionality directly into the Lcvis interface, allowing users to perform additional numerical analysis and view fitting results alongside manually adjusted models.
+- Improved the organization and usability of the program through code restructuring and updates to its graphical interface.
 
 ### 2. Light Curve Feature Detection and Physical Parameter Analysis (`csbt.py`)
 
-Enhanced an existing light curve analysis program by implementing additional numerical methods and calculations.
+Enhanced an existing Python analysis program by implementing additional numerical methods for identifying, fitting, and characterizing features of eclipsing binary light curves.
 
 Key contributions:
-- Implemented a moving-average smoothing technique combined with SciPy's peak-detection functionality to identify light curve minima.
-- Used numerical curve fitting to characterize features of eclipsing binary light curves.
-- Added mathematical calculations for estimating physical parameters from fitted models.
-- Implemented uncertainty propagation using fitted parameter covariance matrices and analytical derivatives.
+- Implemented moving-average smoothing and SciPy peak detection to identify light curve extrema and improve the selection of eclipse regions for fitting.
+- Expanded numerical curve-fitting functionality to characterize eclipse features and light curve maxima.
+- Added calculations to estimate physical properties of eclipsing binary systems from fitted model parameters.
+- Implemented uncertainty propagation using fitted parameter covariance matrices and analytical derivatives to estimate uncertainties in derived physical parameters.
 
 ### 3. Light Curve Data Filtering (`unconex2.py`)
 
@@ -43,24 +43,70 @@ Made targeted improvements to an existing astronomical data preprocessing progra
 Key contribution:
 - Added an optional filtering parameter to exclude the first two and last two observations from each night's observational data before subsequent processing.
 
-## Technology Used
+## Technology and Methods
 
-- **Programming Language:** Python
-- **Numerical Computing:** NumPy, SciPy
-- **Data Visualization:** Matplotlib
-- **Symbolic Mathematics:** SymPy
-- **Graphical User Interfaces:** PyQt5
-- **Scientific Methods:** Curve fitting, peak detection, moving averages, chi-square analysis, uncertainty propagation
+**Programming Language:** Python
+
+**Libraries and Frameworks:**
+- NumPy — Numerical computing and array operations
+- SciPy — Signal processing, peak detection, and numerical curve fitting
+- Matplotlib — Data visualization and plotting
+- SymPy — Symbolic mathematics and analytical derivatives
+- PyQt5 — Graphical user interface components
+
+**Analytical Methods:**
+- Time-series analysis and phase folding
+- Moving-average smoothing and peak detection
+- Numerical curve fitting and model evaluation
+- Chi-square statistical analysis
+- Covariance-based uncertainty estimation and propagation
 
 ## Installation
 
-Before continuing, ensure that you install the necessary packages listed in `requirements.txt`:
+The software was tested using **Python 3.10.14** on macOS.
+
+**1. Clone the repository**
 
 ```bash
-python3 -m pip install -r requirements.txt
+git clone https://github.com/jjuvan/variable-star-lightcurve-analysis.git
+cd variable-star-lightcurve-analysis
 ```
 
-All tests were performed using Python 3.10.14.
+**2. Create a virtual environment**
+
+Using Python 3.10:
+
+```bash
+python3.10 -m venv .venv
+```
+
+**3. Activate the virtual environment**
+
+On macOS or Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+On Windows (Command Prompt):
+
+```cmd
+.venv\Scripts\activate.bat
+```
+
+**4. Install the required dependencies**
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+The required Python packages and their tested versions are listed in `requirements.txt`.
+
+**5. Run the analysis software**
+
+Once the dependencies are installed, Lcvis and CSBT can be launched using the commands provided in the sections below.
+
+The virtual environment should remain activated while running the programs.
 
 ## Example Analysis
 
@@ -97,7 +143,9 @@ The fitted eclipse curves represent localized mathematical approximations rather
 
 ## Independent Dataset Demonstration — ASAS-SN
 
-To demonstrate the analysis software using observations from a different astronomical survey, I applied Lcvis and CSBT to publicly accessible photometric observations of **BS Ursae Majoris (BS UMa)** from the All-Sky Automated Survey for Supernovae (ASAS-SN).
+To demonstrate the analysis software using observations beyond the original ROTSE-I research dataset, I applied Lcvis and CSBT to publicly accessible photometric observations of **BS Ursae Majoris (BS UMa)** from the All-Sky Automated Survey for Supernovae (ASAS-SN).
+
+This demonstration provides an additional example of the software's data preparation, visualization, feature detection, and numerical fitting capabilities using observations from an independent astronomical survey.
 
 The Excel export used in this demonstration contained 177 V-band observations, all of which were retained during conversion. The number of observations available from ASAS-SN may change over time.
 
@@ -154,6 +202,36 @@ The phase-folded observations saved by Lcvis were subsequently analyzed using st
 CSBT fits the primary and secondary eclipse regions separately and evaluates each fitted model against both its corresponding observations and the opposite eclipse. The analysis also includes a fit to the light curve maxima and estimates of binary system parameters with uncertainties.
 
 **Note:** These are exploratory fitting results demonstrating the software's capabilities, not independently validated physical measurements of BS UMa.
+
+## Input Data Formats
+
+Lcvis and standalone CSBT use different input formats.
+
+### Lcvis Input
+
+Lcvis accepts a whitespace-separated `.dat` file containing three numeric columns without a header:
+
+```text
+observation_time  magnitude  magnitude_error
+```
+
+For the ASAS-SN demonstration, these columns represent Heliocentric Julian Date (HJD), apparent magnitude, and magnitude uncertainty.
+
+Lcvis uses the observation times and a specified period to phase-fold the light curve.
+
+### Standalone CSBT Input
+
+Standalone CSBT requires observations that have already been phase-folded. These can be exported directly from Lcvis.
+
+The input contains three numeric columns:
+
+```text
+phase  magnitude  magnitude_error
+```
+
+The first column contains phase values rather than observation times.
+
+**Important:** The ASAS-SN conversion script produces input for Lcvis, not standalone CSBT. To use the converted observations with CSBT, first phase-fold and save them using Lcvis.
 
 ## Running Lcvis
 
