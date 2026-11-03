@@ -2,13 +2,13 @@
 
 ## Project Overview
 
-This repository showcases my contributions to the development and improvement of Python-based software for analyzing astronomical light curves, completed during my undergraduate research at John Carroll University.
+This repository showcases my contributions to Python-based software developed during undergraduate research at John Carroll University to analyze astronomical light curves—time-series measurements of stellar brightness.
 
-The research focused on variable stars, particularly eclipsing binary systems, using observational data from the Robotic Optical Transient Search Experiment (ROTSE-I) telescope.
+The research focused on identifying and characterizing variable stars, particularly eclipsing binary systems, using observations from the Robotic Optical Transient Search Experiment (ROTSE-I) telescope.
 
-My work involved expanding existing analysis programs to improve light curve visualization, model fitting, feature detection, and the extraction of physical parameters from observational data.
+My work involved extending existing analysis programs to improve data visualization, feature detection, numerical model fitting, statistical evaluation, and physical parameter estimation. These contributions included implementing moving-average smoothing and peak-detection methods, developing interactive fitting controls, and integrating analysis functionality into a unified visualization interface.
 
-The software incorporates numerical and scientific computing techniques using Python, NumPy, SciPy, and Matplotlib.
+The project demonstrates practical applications of Python, NumPy, SciPy, Matplotlib, numerical analysis, and scientific data visualization.
 
 **Original Project:** [ROTSEANA](https://github.com/rotsehub/rotseana)
 
