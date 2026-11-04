@@ -271,9 +271,9 @@ You can see that there are various models, parameters, sliders, text boxes, and 
 - **1/2x Period:** halve the plot's current period.
 - **+[Parameter]:** increase the parameter by one stepsize.
 - **-[Parameter]:** decrease the parameter by one stepsize.
-- **[Parameter] Max]:** set the parameter's max value for the slider for fine-tuning.
-- **[Parameter] Min]:** set the parameter's min value for the slider for fine-tuning.
-- **[Parameter] Stepsize]:** set the parameter's stepsize value for the slider and +/- buttons.
+- **[Parameter] Max:** set the parameter's max value for the slider for fine-tuning.
+- **[Parameter] Min:** set the parameter's min value for the slider for fine-tuning.
+- **[Parameter] Stepsize:** set the parameter's stepsize value for the slider and +/- buttons.
 - **Magnitude Max:** set the plot's maximum magnitude.
 - **Magnitude Min:** set the plot's minimum magnitude.
 - **Magnitude Range:** set the plot's magnitude range around the center of the plot.
