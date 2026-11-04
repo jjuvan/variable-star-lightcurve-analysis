@@ -2,11 +2,11 @@
 
 ## Project Overview
 
-This repository showcases my contributions to Python-based software developed during undergraduate research at John Carroll University to analyze astronomical light curves—time-series measurements of stellar brightness.
+This repository showcases my contributions to Python-based software developed during my undergraduate research at John Carroll University to analyze astronomical light curves (time-series measurements of stellar brightness).
 
-The research focused on identifying and characterizing variable stars, particularly eclipsing binary systems, using observations from the Robotic Optical Transient Search Experiment (ROTSE-I) telescope.
+My research focused on identifying and characterizing variable stars, particularly eclipsing binary systems, using observations from the Robotic Optical Transient Search Experiment (ROTSE-I) telescope.
 
-My work involved extending existing analysis programs to improve data visualization, feature detection, numerical model fitting, statistical evaluation, and physical parameter estimation. These contributions included implementing moving-average smoothing and peak-detection methods, developing interactive fitting controls, and integrating analysis functionality into a unified visualization interface.
+My work involved extending existing analysis programs to improve data visualization, feature detection, numerical model fitting, statistical evaluation, and physical parameter estimation. These contributions included implementing a moving-average smoothing and peak-detection method, developing interactive fitting controls, and integrating analysis functionality into a unified visualization interface.
 
 The project demonstrates practical applications of Python, NumPy, SciPy, Matplotlib, numerical analysis, and scientific data visualization.
 
@@ -16,32 +16,29 @@ The project demonstrates practical applications of Python, NumPy, SciPy, Matplot
 
 ## Technical Contributions
 
+I contributed primarily to two programs: **Light Curve Visualization (Lcvis) and Chi-Square Binary Test (CSBT).** Each program accomplishes a different goal:
+- Lcvis: manually phase-fold observational data and perform chi-square analyses by applying different mathematical models.
+- CSBT: automatically fit different sections of phase-folded data, reporting chi-square values and physical parameters calculated based on the fits.
+
 ### 1. Interactive Light Curve Visualization and Modeling (lcvis.py)
 
-Extended an existing Python visualization program to support interactive model fitting and statistical analysis of variable-star light curves.
+Significantly extended existing Python visualization program to support manual model fitting and statistical analysis of variable star light curves.
 
 Key contributions:
-- Developed interactive controls for selecting mathematical models, adjusting fitting parameters, and modifying the period used to phase-fold observational data.
-- Implemented model evaluation and chi-square calculations to compare mathematical models against observed light curves.
-- Integrated CSBT fitting functionality directly into the Lcvis interface, allowing users to perform additional numerical analysis and view fitting results alongside manually adjusted models.
-- Improved the organization and usability of the program through code restructuring and updates to its graphical interface.
+- Developed interactive controls for selecting mathematical models, adjusting fitt parameters, and modifying period used to phase-fold observational data.
+- Implemented chi-square calculations to compare fitted models against observed light curves.
+- Integrated CSBT fitting functionality directly into Lcvis interface, allowing users to perform automatic fitting and view fitting results alongside manually adjusted models.
+- Improved organization and usability of the program through code restructuring and updates to its GUI.
 
 ### 2. Light Curve Feature Detection and Physical Parameter Analysis (`csbt.py`)
 
-Enhanced an existing Python analysis program by implementing additional numerical methods for identifying, fitting, and characterizing features of eclipsing binary light curves.
+Enhanced existing Python analysis program by implementing additional methods for identifying, fitting, and characterizing features of eclipsing binary light curves.
 
 Key contributions:
-- Implemented moving-average smoothing and SciPy peak detection to identify light curve extrema and improve the selection of eclipse regions for fitting.
+- Implemented moving-average smoothing and SciPy peak detection to identify light curve extrema and improve selection of eclipse regions for fitting.
 - Expanded numerical curve-fitting functionality to characterize eclipse features and light curve maxima.
 - Added calculations to estimate physical properties of eclipsing binary systems from fitted model parameters.
 - Implemented uncertainty propagation using fitted parameter covariance matrices and analytical derivatives to estimate uncertainties in derived physical parameters.
-
-### 3. Light Curve Data Filtering (`unconex2.py`)
-
-Made targeted improvements to an existing astronomical data preprocessing program.
-
-Key contribution:
-- Added an optional filtering parameter to exclude the first two and last two observations from each night's observational data before subsequent processing.
 
 ## Technology and Methods
 
@@ -58,7 +55,7 @@ Key contribution:
 - Time-series analysis and phase folding
 - Moving-average smoothing and peak detection
 - Numerical curve fitting and model evaluation
-- Chi-square statistical analysis
+- Chi-square per degree of freedom statistical analysis
 - Covariance-based uncertainty estimation and propagation
 
 ## Installation
@@ -117,14 +114,14 @@ The screenshot below demonstrates the interactive Lcvis interface analyzing an e
 ![Lcvis interface displaying an eclipsing binary light curve with fitted models and CSBT analysis results](images/lcvis-csbt-analysis.png)
 
 The interface includes:
-- **Interactive model adjustment:** Controls for modifying model parameters, selecting mathematical models, and adjusting the plotted period.
-- **Integrated fitting analysis:** CSBT fitting results displayed alongside the manually adjusted Lcvis model.
-- **Statistical output:** Chi-square values, fitted parameters, and estimated uncertainties.
-- **Physical parameter estimation:** Calculated estimates of eclipsing binary system properties based on fitted light curve features.
+- **Interactive model adjustment:** Controls for selecting mathematical models, modifying model parameters, and adjusting the plotted period.
+- **Integrated fitting analysis:** CSBT fitting results displayed alongside the manually-adjusted Lcvis model.
+- **Statistical output:** Chi-square values and fitted parameters for *both* Lcvis and CSBT models, with estimated uncertainties for CSBT fits.
+- **Physical parameter estimation:** Calculated estimates of eclipsing binary system properties based on CSBT-fitted light curve features.
 
 ### Standalone CSBT Analysis
 
-The standalone Chi-Square Binary Test (CSBT) program performs numerical fitting and analysis of eclipsing binary star light curves.
+CSBT can also be utilized as a standalone program, performing the same numerical fitting and analysis of eclipsing binary star light curves as in the Lcvis interface.
 
 The screenshot below demonstrates the analysis of the same variable star shown in the Lcvis example, using the moving-average-based feature detection method.
 
@@ -132,20 +129,18 @@ The screenshot below demonstrates the analysis of the same variable star shown i
 
 The visualization demonstrates several analytical capabilities:
 
-- **Feature detection:** Uses moving-average smoothing and peak detection to identify important features of the light curve.
-- **Eclipse fitting:** Fits mathematical models to the primary and secondary eclipse regions.
-- **Maxima fitting:** Fits a sinusoidal model to characterize the light curve's maxima.
-- **Statistical evaluation:** Reports chi-square statistics for fitted models and comparisons with observational data.
-- **Uncertainty estimation:** Reports fitted parameter uncertainties derived from the fitting procedure.
-- **Physical parameter estimation:** Calculates estimates of eclipsing binary system properties, including eccentricity, argument of periastron, effective temperature ratio, and an inclination-related oblateness parameter.
+- **Feature detection:** Uses moving-average smoothing and peak detection to identify the two minima of the light curve.
+- **Eclipse fitting:** Fits parabolic models to the primary and secondary eclipse regions.
+- **Maxima fitting:** Fits a squared-sinusoidal model to characterize the light curve's maxima.
+- **Statistical evaluation:** Reports chi-square statistics for fitted models and cross-fit comparisons.
+- **Uncertainty estimation:** Reports model parameter uncertainties derived from the fitting procedure.
+- **Physical parameter estimation:** Calculates estimations of eclipsing binary system properties, including eccentricity, argument of periastron, effective temperature ratio, and an inclination-related oblateness parameter, along with their propagated uncertainties based on fits.
 
 The fitted eclipse curves represent localized mathematical approximations rather than a single global physical model of the binary system.
 
 ## Independent Dataset Demonstration — ASAS-SN
 
-To demonstrate the analysis software using observations beyond the original ROTSE-I research dataset, I applied Lcvis and CSBT to publicly accessible photometric observations of **BS Ursae Majoris (BS UMa)** from the All-Sky Automated Survey for Supernovae (ASAS-SN).
-
-This demonstration provides an additional example of the software's data preparation, visualization, feature detection, and numerical fitting capabilities using observations from an independent astronomical survey.
+To demonstrate the analysis software using observations beyond the original ROTSE-I research dataset, I applied Lcvis and CSBT to publicly accessible photometric observations of **BS Ursae Majoris (BS UMa)** from the All-Sky Automated Survey for Supernovae (ASAS-SN). This demonstration provides an additional example of the software's data preparation, visualization, feature detection, and fitting capabilities using observations from an independent astronomical survey.
 
 The Excel export used in this demonstration contained 177 V-band observations, all of which were retained during conversion. The number of observations available from ASAS-SN may change over time.
 
@@ -189,17 +184,17 @@ Lcvis can also save the phase-folded observations to a separate `.dat` file for 
 
 ### Lcvis Visualization and Integrated CSBT Analysis
 
-The ASAS-SN observations were formatted as three-column input data containing observation time, magnitude, and magnitude uncertainty. Lcvis was used to phase-fold the observations, interactively adjust a periodic Gaussian model, and run the integrated CSBT analysis.
+The ASAS-SN observations were formatted as three-column input data containing observation time, magnitude, and magnitude uncertainty. Lcvis was used to phase-fold the observations, interactively adjust a Periodic Gaussian model, and run CSBT analysis. All of the relevant information regarding both the Lcvis and CSBT fits can be seen to the right of the plot.
 
 ![Lcvis analysis of ASAS-SN observations of BS UMa](images/lcvis-csbt-asassn-analysis.png)
 
 ### Standalone CSBT Analysis
 
-The phase-folded observations saved by Lcvis were subsequently analyzed using standalone CSBT, with the moving-average method and a fitting window of 0.15 phase.
+The phase-folded observations saved by Lcvis were then analyzed using standalone CSBT, with the same moving-average method and a fitting window of 0.15 phase.
 
 ![Standalone CSBT analysis of ASAS-SN observations of BS UMa](images/csbt-asassn-standalone-analysis.png)
 
-CSBT fits the primary and secondary eclipse regions separately and evaluates each fitted model against both its corresponding observations and the opposite eclipse. The analysis also includes a fit to the light curve maxima and estimates of binary system parameters with uncertainties.
+CSBT finds and fits the primary and secondary eclipse regions separately and evaluates each fitted model against both its corresponding observations and the opposite eclipse. The analysis also includes a fit to the light curve maxima and estimations of binary system parameters with uncertainties.
 
 **Note:** These are exploratory fitting results demonstrating the software's capabilities, not independently validated physical measurements of BS UMa.
 
@@ -231,7 +226,7 @@ phase  magnitude  magnitude_error
 
 The first column contains phase values rather than observation times.
 
-**Important:** The ASAS-SN conversion script produces input for Lcvis, not standalone CSBT. To use the converted observations with CSBT, first phase-fold and save them using Lcvis.
+**Important:** The ASAS-SN conversion script produces input for Lcvis, not standalone CSBT. To use the converted observations with standalone CSBT, first phase-fold and save them using Lcvis.
 
 ## Running Lcvis
 
@@ -255,6 +250,54 @@ python3 src/lcvis.py observations.dat -p0 0.3495136
 ```
 
 Lcvis allows users to interactively inspect the phase-folded light curve, adjust fitting models, and run the integrated CSBT analysis.
+
+![Lcvis analysis of ASAS-SN observations of BS UMa](images/lcvis-csbt-asassn-analysis.png)
+
+You can see that there are various models, parameters, sliders, text boxes, and buttons displayed. They are as follows:
+- **Arguments:** choose which parameter to adjust in Lcvis, either in phase-folding or in model adjustment.
+  - **Period:** phase-fold of the observational data, in days.
+  - **Amplitude:** amplitude of the model.
+  - **Model X-Shift**: horizontal shift of the model.
+  - **Model Y-Shift**: vertical shift of the model (note the inverted Y-axis to reflect that dimmer magnitudes are more positive).
+  - **Full Width at Half Max:** specific to Periodic Gaussian model, controls the FWHM of the function.
+- **Models:** choose a model to fit to the observational data.
+  - **Sine, 1 Cycle per Phase**
+  - **Sine, 2 Cycles per Phase**
+  - **Absolute Sine**
+  - **Periodic Gaussian** (repeats every 0.5 phase)
+- **Parameter Slider (long slider):** scroll through the selected argument at a certain stepsize.
+- **Minima x^2 Width (short slider):** set the window size for chi-square calculations, sampling observations only within those regions.
+- **2x Period:** double the plot's current period.
+- **1/2x Period:** halve the plot's current period.
+- **+[Parameter]:** increase the parameter by one stepsize.
+- **-[Parameter]:** decrease the parameter by one stepsize.
+- **[Parameter] Max]:** set the parameter's max value for the slider for fine-tuning.
+- **[Parameter] Min]:** set the parameter's min value for the slider for fine-tuning.
+- **[Parameter] Stepsize]:** set the parameter's stepsize value for the slider and +/- buttons.
+- **Magnitude Max:** set the plot's maximum magnitude.
+- **Magnitude Min:** set the plot's minimum magnitude.
+- **Magnitude Range:** set the plot's magnitude range around the center of the plot.
+- **Save:** save the plot. Choose between the phased data (`.dat`) or an interactive plot image (`.pkl`). For the plot, you can choose to save no models, Lcvis model only, CSBT model only (if displayed), or both. Can choose to overwrite files with the same name if desired, otherwise file names will tack on a `_dupe` extension with a unique number.
+- **Run csbt.py:** run CSBT in the Lcvis interface. Choose the method, number of points for the method, and window size of the eclipses.
+- **Clear CSBT Output:** clear the current CSBT output.
+
+At the very bottom of the window are the current selected parameter, its min/max slider values, and its current stepsize, as well as where the observational data is centered at in the plot.
+
+To the right of the plot contains all of the information, including:
+- Lcvis model equation and current parameter values
+- Lcvis chi-square calculations
+- Phase-folded period
+- Plot Y-axis information
+- CSBT output, with input parameters, including:
+  - Fit equations for each minimum and the maxima, as well as parameter uncertainties
+  - Chi-square calculations for corresponding observational data and cross-fits
+  - Binary parameters with uncertainties
+
+If you save a `.pkl` file, you can re-open the file using `unpickle.py`:
+
+```bash
+python3 scripts/unpickle.py /path/to/lcvis_data.dat
+```
 
 Note that in order to run CSBT in the Lcvis window, `lcvis.py` and `csbt.py` **must** remain in the same directory because Lcvis imports functionality from CSBT to perform integrated light-curve analysis. Both programs are provided in the repository's `src/` directory. When running Lcvis, preserve this directory structure.
 
@@ -289,7 +332,9 @@ For BS UMa:
 python3 src/csbt.py observations_lcvis.dat -m move_avg -w 0.15
 ```
 
-CSBT fits the primary and secondary eclipse regions and the light-curve maxima. It also calculates fitting statistics and estimates binary-system parameters with associated uncertainties.
+![Standalone CSBT analysis of ASAS-SN observations of BS UMa](images/csbt-asassn-standalone-analysis.png)
+
+CSBT fits the primary and secondary eclipse regions and the light-curve maxima. It also calculates fitting statistics and estimates binary-system parameters with associated uncertainties. This information is the *same* as the reported information in Lcvis, so long as the same data and input parameters are provided.
 
 ## Development History
 
@@ -305,7 +350,7 @@ The following Pull Requests document two of my major contributions to the origin
 ### [Pull Request #45 — Lcvis and CSBT Revisions](https://github.com/rotsehub/rotseana/pull/45)
 
 - Restructured `lcvis.py` to reduce reliance on nested functions and improve code organization.
-- Updated the graphical interface to use PyQt5 for dialog windows.
+- Updated the GUI to use PyQt5 for dialog windows.
 - Expanded interactive model selection, parameter adjustment, and period controls.
 - Integrated CSBT fitting functionality into the Lcvis visualization interface.
 - Improved saving functionality for analysis results and plots.
